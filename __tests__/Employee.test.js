@@ -21,19 +21,19 @@ test('check if name is received', () => {
 })
 
 test('check if id is received', () => {
-    const employee = new Employee('Jack', "12345")
+    const employee = new Employee('Jack')
 
     expect(employee.getId()).toBe(employee.id)
 })
 
 test('check if email is received', () => {
-    const employee = new Employee('Jack', "12345")
+    const employee = new Employee('Jack')
 
     expect(employee.getEmail()).toStrictEqual(expect.any(String))
 })
 
 test('check if role is received', () => {
-    const employee = new Employee('Jack', "12345")
+    const employee = new Employee('Jack')
 
     expect(employee.getRole()).toBe('Employee')
 })
