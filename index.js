@@ -1,4 +1,6 @@
-const inquirer = require("inquirer")
+const fs = require('fs');
+const inquirer = require("inquirer");
+const generateHtml = require('./src/generateHTML');
 
 const promptManager = () => {
     return inquirer.prompt(
@@ -84,7 +86,8 @@ const promptEmployee = () => {
             promptIntern();
         }
         else {
-            console.log("Generating Team Profile...")
+            console.log("Finito!")
+            compile();
         }
     })
 }
@@ -151,7 +154,8 @@ const promptEngi = () => {
         ]
     )
     .then(engiData => {
-        promptEmployee(engiData)
+        console.log(engiData)
+        promptEmployee()
     })
 }
 
@@ -217,8 +221,18 @@ const promptIntern = () => {
         ]
     )
     .then(intData => {
-        promptEmployee(intData)
+        console.log(intData)
+        promptEmployee()
     })
+}
+
+const compile = (profileData) => {
+        const pageHTML = generateHtml(profileData);
+
+        fs.writeFile('./dist/index.html', pageHTML, err => {
+            if (err) throw new Error(err);
+            console.log('Team Profile created! Check it out in your dist folder!')
+        })
 }
 
 promptManager();
