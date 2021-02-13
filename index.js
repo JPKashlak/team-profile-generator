@@ -59,23 +59,166 @@ const promptManager = () => {
                     }
                 }
             },
+        ]
+    )
+    .then(managerData => {
+        promptEmployee(managerData)
+    })
+
+}
+
+
+const promptEmployee = () => {
+    return inquirer.prompt(         
             {
             type: 'list',
             name: 'newEmployee',
             message: "Would you like to add another employee to the team profile?",
             choices: ['Engineer', 'Intern', 'Finished']
+            })
+    .then(promptData => {
+        if (promptData.newEmployee === 'Engineer') {
+            promptEngi();
+        }
+        else if (promptData.newEmployee === 'Intern') {
+            promptIntern();
+        }
+        else {
+            console.log("Generating Team Profile...")
+        }
+    })
+}
+
+const promptEngi = () => {
+    return inquirer.prompt(
+        [
+            {
+                type: 'input',
+                name: 'engiName',
+                message: "What is the engineer's name?",
+                validate: engiNameInput => {
+                    if (engiNameInput) {
+                        return true
+                    }
+                    else {
+                        console.log ("Please enter the engineer's name!")
+                        return false;
+                    }
+                }
+            },
+            {
+                type: 'input',
+                name: 'engiId',
+                message: "What is the engineer's ID Number?",
+                validate: engiIdInput => {
+                    if (engiIdInput && engiIdInput > 0) {
+                        return true
+                    }
+                    else {
+                        console.log ("Please enter a valid ID number!")
+                        return false;
+                    }
+                }
+            },
+            {
+                type: 'input',
+                name: 'engiEmail',
+                message: "What is the engineer's email address?",
+                validate: engiEmailInput => {
+                    if (engiEmailInput) {
+                        return true
+                    }
+                    else {
+                        console.log ("Please enter the engineer's email address!")
+                        return false;
+                    }
+                }
+            },
+            {
+                type: 'input',
+                name: 'engiGithub',
+                message: "What is the engineer's GitHub username?",
+                validate: empGithubInput => {
+                    if (empGithubInput) {
+                        return true
+                    }
+                    else {
+                        console.log ("Please enter the engineer's GitHub username!")
+                        return false;
+                    }
+                }
             }
         ]
     )
-    .then(data => {
-        if (data.newEmployee === 'Engineer' || data.newEmployee === 'Intern') {
-            console.log("Did it")
-        }
-        else {
-            console.log("Nope")
-        }
-    })       
+    .then(engiData => {
+        promptEmployee(engiData)
+    })
+}
+
+const promptIntern = () => {
+    return inquirer.prompt(
+        [
+            {
+                type: 'input',
+                name: 'intName',
+                message: "What is the intern's name?",
+                validate: intNameInput => {
+                    if (intNameInput) {
+                        return true
+                    }
+                    else {
+                        console.log ("Please enter the intern's name!")
+                        return false;
+                    }
+                }
+            },
+            {
+                type: 'input',
+                name: 'intId',
+                message: "What is the intern's ID Number?",
+                validate: intIdInput => {
+                    if (intIdInput && intIdInput > 0) {
+                        return true
+                    }
+                    else {
+                        console.log ("Please enter a valid ID number!")
+                        return false;
+                    }
+                }
+            },
+            {
+                type: 'input',
+                name: 'intEmail',
+                message: "What is the intern's email address?",
+                validate: intEmailInput => {
+                    if (intEmailInput) {
+                        return true
+                    }
+                    else {
+                        console.log ("Please enter the intern's email address!")
+                        return false;
+                    }
+                }
+            },
+            {
+                type: 'input',
+                name: 'intSchool',
+                message: "What school does the intern attend?",
+                validate: intSchoolInput => {
+                    if (intSchoolInput) {
+                        return true
+                    }
+                    else {
+                        console.log ("Please enter the intern's school!")
+                        return false;
+                    }
+                }
+            }
+        ]
+    )
+    .then(intData => {
+        promptEmployee(intData)
+    })
 }
 
 promptManager();
-
