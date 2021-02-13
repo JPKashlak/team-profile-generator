@@ -58,23 +58,23 @@ const promptManager = () => {
                         return false;
                     }
                 }
-            }
-        ]
-    )
-}
-
-
-const promptEmployee = () => {
-    return inquirer.prompt(
-        [
+            },
             {
-                type: 'list',
-                name: 'employeeChoice',
-                message: "Would you like to add another employee to the team profile?",
-                choices: ['Engineer', 'Intern', 'Finished']
+            type: 'list',
+            name: 'newEmployee',
+            message: "Would you like to add another employee to the team profile?",
+            choices: ['Engineer', 'Intern', 'Finished']
             }
         ]
     )
+    .then(data => {
+        if (data.newEmployee === 'Engineer' || data.newEmployee === 'Intern') {
+            console.log("Did it")
+        }
+        else {
+            console.log("Nope")
+        }
+    })       
 }
 
 promptManager();

@@ -3,19 +3,19 @@ const { any } = require('expect');
 const Employee = require('../lib/Employee');
 
 test('create an Employee', () => {
-    const employee = new Employee('Jack', "12345");
+    const employee = new Employee('Jack');
 
     expect(employee.name).toBe('Jack');
 });
 
 test('check for Employee id', () => {
-    const employee = new Employee('Jack', "12345");
+    const employee = new Employee('Jack');
 
     expect(employee.id).toBe(employee.id);
 })
 
 test('check if name is received', () => {
-    const employee = new Employee('Jack', "12345")
+    const employee = new Employee('Jack')
 
     expect(employee.getName()).toStrictEqual(expect.stringContaining(employee.name))
 })
