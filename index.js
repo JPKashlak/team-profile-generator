@@ -71,25 +71,10 @@ const promptManager = () => {
     )
         .then(managerData => {
             const newManager = new Manager(managerData.managerName, managerData.managerId, managerData.managerEmail, managerData.managerOffice)
-            console.log(newManager)
             roster.push(newManager)
-            console.log(roster)
         }
 
     )
-    
-
-    // .then(profileData => {
-    //     const pageHTML = generateHtml(profileData);
-
-    //     fs.writeFile('./dist/index.html', pageHTML, err => {
-    //         if (err) throw new Error(err);
-    //         console.log('Team Profile created! Check it out in your dist folder!')
-    //     })
-    // })
-    
-   
-
     .then(managerData => {
         promptEmployee(managerData)
     })
@@ -113,6 +98,8 @@ const promptEmployee = () => {
         }
         else {
             console.log("Writing index.html")
+            compile()
+            
         }
     })
 }
@@ -180,9 +167,7 @@ const promptEngi = () => {
     )
     .then(engiData => {
         const newEngineer = new Engineer(engiData.engiName, engiData.engiId, engiData.engiEmail, engiData.engiGithub)
-        console.log(newEngineer)
         roster.push(newEngineer)
-        console.log(roster)
         promptEmployee()
     })
 }
@@ -249,22 +234,32 @@ const promptIntern = () => {
         ]
     )
     .then(intData => {
-        const newIntern = new Intern(intData.intName, intData.intId, intData.intEmail, intData.intGithub)
-        console.log(newIntern)
+        const newIntern = new Intern(intData.intName, intData.intId, intData.intEmail, intData.intSchool)
         roster.push(newIntern)
-        console.log(roster)
         promptEmployee()
     })
 }
 
-// const compile = (profileData) => {
-//     const pageHTML = generateHtml(profileData);
+function compile() {
+    console.log(roster);
+    const rosterData = {...roster}
+    console.log(rosterData)
+    console.log(rosterData[0].name)
 
-//     fs.writeFile('./dist/index.html', pageHTML, err => {
-//         if (err) throw new Error(err);
-//         console.log('Team Profile created! Check it out in your dist folder!')
-//     })
-// }
+    const pageHTML = generateHtml(rosterData)                
+    
+    // fs.writeFile('./dist/index.html', pageHTML, err => {
+    //     if (err) throw new Error(err);
+    //     console.log('Team Profile created! Check it out in your dist folder!')
+    // })
+}
 
 promptManager()
+    
+
+
+
+
+
+
 
