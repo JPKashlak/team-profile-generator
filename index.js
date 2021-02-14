@@ -1,6 +1,12 @@
 const fs = require('fs');
 const inquirer = require("inquirer");
+const Employee = require('./lib/Employee');
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
 const generateHtml = require('./src/generateHTML');
+
+const roster = [];
 
 const promptManager = () => {
     return inquirer.prompt(
@@ -63,10 +69,30 @@ const promptManager = () => {
             },
         ]
     )
+        .then(managerData => {
+            const newManager = new Manager(managerData.managerName, managerData.managerId, managerData.managerEmail, managerData.managerOffice)
+            console.log(newManager)
+            roster.push(newManager)
+            console.log(roster)
+        }
+
+    )
+    
+
+    // .then(profileData => {
+    //     const pageHTML = generateHtml(profileData);
+
+    //     fs.writeFile('./dist/index.html', pageHTML, err => {
+    //         if (err) throw new Error(err);
+    //         console.log('Team Profile created! Check it out in your dist folder!')
+    //     })
+    // })
+    
+   
+
     .then(managerData => {
         promptEmployee(managerData)
     })
-
 }
 
 
@@ -86,8 +112,7 @@ const promptEmployee = () => {
             promptIntern();
         }
         else {
-            console.log("Finito!")
-            compile();
+            console.log("Writing index.html")
         }
     })
 }
@@ -154,7 +179,10 @@ const promptEngi = () => {
         ]
     )
     .then(engiData => {
-        console.log(engiData)
+        const newEngineer = new Engineer(engiData.engiName, engiData.engiId, engiData.engiEmail, engiData.engiGithub)
+        console.log(newEngineer)
+        roster.push(newEngineer)
+        console.log(roster)
         promptEmployee()
     })
 }
@@ -221,18 +249,22 @@ const promptIntern = () => {
         ]
     )
     .then(intData => {
-        console.log(intData)
+        const newIntern = new Intern(intData.intName, intData.intId, intData.intEmail, intData.intGithub)
+        console.log(newIntern)
+        roster.push(newIntern)
+        console.log(roster)
         promptEmployee()
     })
 }
 
-const compile = (profileData) => {
-        const pageHTML = generateHtml(profileData);
+// const compile = (profileData) => {
+//     const pageHTML = generateHtml(profileData);
 
-        fs.writeFile('./dist/index.html', pageHTML, err => {
-            if (err) throw new Error(err);
-            console.log('Team Profile created! Check it out in your dist folder!')
-        })
-}
+//     fs.writeFile('./dist/index.html', pageHTML, err => {
+//         if (err) throw new Error(err);
+//         console.log('Team Profile created! Check it out in your dist folder!')
+//     })
+// }
 
-promptManager();
+promptManager()
+
