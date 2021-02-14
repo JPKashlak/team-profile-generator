@@ -242,16 +242,17 @@ const promptIntern = () => {
 
 function compile() {
     console.log(roster);
+    
     const rosterData = {...roster}
     console.log(rosterData)
-    console.log(rosterData[0].name)
+    
 
     const pageHTML = generateHtml(rosterData)                
     
-    // fs.writeFile('./dist/index.html', pageHTML, err => {
-    //     if (err) throw new Error(err);
-    //     console.log('Team Profile created! Check it out in your dist folder!')
-    // })
+    fs.writeFile('./dist/index.html', pageHTML, err => {
+        if (err) throw new Error(err);
+        console.log('Team Profile created! Check it out in your dist folder!')
+    })
 }
 
 promptManager()
