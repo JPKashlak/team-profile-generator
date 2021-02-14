@@ -1,6 +1,5 @@
 const fs = require('fs');
 const inquirer = require("inquirer");
-const Employee = require('./lib/Employee');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
@@ -241,10 +240,10 @@ const promptIntern = () => {
 }
 
 function compile() {
-    console.log(roster);
+    // console.log(roster);
     
     const rosterData = {...roster}
-    console.log(rosterData)
+    // console.log(rosterData)
     
 
     const pageHTML = generateHtml(rosterData)                
