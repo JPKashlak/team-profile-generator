@@ -23,8 +23,8 @@ Watch: https://drive.google.com/file/d/13_xRrVaxA5YmpS0re3z5e5f0IBFHwn6U/view
  JavaScript, ES6, Node, Inquirer, HTML, CSS
 
 ## Screenshots
-![screenshot1](./Develop/assets/images/screenshot1.png)
-![screenshot2](./Develop/assets/images/screenshot2.png)
+![screenshot1](./assets/screenshot1.png)
+![screenshot2](./assets/screenshot2.png)
 
 ## Questions
 If you have any further questions about this application / repository feel free to contact me at: 
