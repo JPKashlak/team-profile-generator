@@ -4,6 +4,7 @@
 * [Description](#description)
 * [Intallation](#installation)
 * [Usage](#usage)
+* [Tests](#tests)
 * [Screenshots](#screenshots)
 * [Questions](#questions)
 
