@@ -16,6 +16,9 @@ First, clone the repository from GitHub. Second, run 'npm init' from the root of
 ## Usage
 From the command line navigate to the root directory and run 'node index' to begin the program. After that just answer the questions provided until your roster is complete!
 
+## Tests
+Tests are provided in the repository. If you wish to run them you will first need to install Jest by running "npm install jest --save-dev" from your terminal in the root directory. Then, in package.json, change the value of scripts.test to "jest." Finally, run "npm run test"; this is demonstrated in the video walkthrough.
+
 ## Tutorial
 Watch: https://drive.google.com/file/d/13_xRrVaxA5YmpS0re3z5e5f0IBFHwn6U/view
 
